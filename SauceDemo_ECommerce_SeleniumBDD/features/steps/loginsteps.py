@@ -33,7 +33,6 @@ def step_impl(context):
     if page_loaded:
         context.driver.close()
         assert True
-    # assert page_loaded is True
 
 
 @then('an error message is displayed above Login button')
@@ -48,13 +47,3 @@ def step_impl(context):
     if error_displayed:
         context.driver.close()
         assert True
-    # assert error_displayed is True
-    # context.driver.close()
-
-# @then('Log out')
-# def step_impl(context):
-#     context.driver.find_element(By.ID, "react-burger-menu-btn").click()
-#     context.driver.find_element(By.ID, "logout_sidebar_link").click()
-#     logged_out = context.driver.find_element(By.ID, "user-name").is_displayed()
-#     assert logged_out is True
-#     context.driver.close()
