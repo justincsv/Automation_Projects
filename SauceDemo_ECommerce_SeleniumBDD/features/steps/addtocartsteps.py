@@ -4,16 +4,7 @@ from selenium.webdriver.common.by import By
 
 @when('the user clicks add to cart button on item "{item_index}" in the products page')
 def step_impl(context, item_index):
-    # item = "add-to-cart-" + item.lower().replace(" ", "-")
-    # context.driver.find_element(By.ID, item).click()
-    # for ele in add_to_cart_buttons:
-    #     add_to_cart_buttons(item_index)
-    #     if ele.get_attribute("id").startswith("add-to-cart-"):
-    #         ele.click()
     try:
-        # add_to_cart_buttons = context.driver.find_elements(
-        #     By.XPATH, '//button[starts-with(@id,"add-to-cart-")]')
-        # add_to_cart_buttons[int(item_index) - 1].click()
         item_buttons = context.driver.find_elements(
             By.CLASS_NAME, 'inventory_item_name')
         context.item_name = item_buttons[int(item_index) - 1].text
@@ -57,16 +48,7 @@ def step_impl(context):
 
 @then('the add to cart button changes to remove button on item "{item_index}"')
 def step_impl(context, item_index):
-    # item = "remove-" + item.lower().replace(" ", "-")
-    # remove_button_shown = context.driver.find_element(By.ID, item).is_displayed()
-    # remove_buttons = context.driver.find_elements(
-    #     By.CLASS_NAME, "btn_inventory")
-    # for ele in remove_buttons:
-    #     if ele.get_attribute("id").startswith("remove-"):
-    #         assert ele.is_displayed() is True
     try:
-        # remove_buttons = context.driver.find_elements(
-        #     By.XPATH, '//button[starts-with(@id,"remove-")]')
         item = "remove-" + context.item_name.lower().replace(" ", "-")
         assert context.driver.find_element(By.ID, item).is_displayed() is True
     except:
@@ -75,7 +57,6 @@ def step_impl(context, item_index):
 @then('the add to cart button changes to remove button')
 def step_impl(context):
     try:
-        # remove_button_visible = context.driver.find_element(By.XPATH, '//button[starts-with(@id,"remove-")]').is_displayed()
         item = "remove-" + context.item_name.lower().replace(" ", "-")
         remove_button_visible = context.driver.find_element(By.ID, item).is_displayed()
         assert remove_button_visible is True
